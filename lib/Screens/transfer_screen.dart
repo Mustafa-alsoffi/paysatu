@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paysatu/utils/constants.dart';
 
 class TransferScreen extends StatefulWidget {
   @override
@@ -23,11 +24,41 @@ class _TransferScreenState extends State<TransferScreen>
 
   @override
   Widget build(BuildContext context) {
+    var tabBar = TabBar(
+      unselectedLabelColor: Colors.black54,
+      indicatorSize: TabBarIndicatorSize.tab,
+      indicator: BoxDecoration(
+          borderRadius: BorderRadius.circular(20), color: Colors.white),
+      controller: _tabController,
+      tabs: const [
+        Tab(
+          child: Align(
+            alignment: Alignment.center,
+            child: Text("Phone Number", style: TextStyle(color: Colors.black)),
+          ),
+        ),
+        Tab(child: Text('PaySatu ID', style: TextStyle(color: Colors.black))),
+        Tab(child: Text('Bank account', style: TextStyle(color: Colors.black))),
+      ],
+    );
     return Scaffold(
       appBar: AppBar(
-        title: Text('My Screen'),
+        elevation: 0.0,
+        centerTitle: true,
+        title: const Text("Send Money", style: TextStyle(color: Colors.black)),
+        bottom: PreferredSize(
+          preferredSize: tabBar.preferredSize,
+          child: Material(
+            shadowColor: Colors.black,
+            color: AppColors.colorMap[300],
+            borderRadius: BorderRadius.all(
+              Radius.circular(20),
+            ),
+            child: tabBar,
+          ),
+        ),
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: const Icon(Icons.arrow_back),
           onPressed: () {
             Navigator.pop(context);
           },
@@ -36,28 +67,29 @@ class _TransferScreenState extends State<TransferScreen>
       body: Column(
         children: [
           Padding(
-            padding: const EdgeInsets.all(8.0),
-            child: TextField(
-              decoration: InputDecoration(
-                hintText: 'Search...',
-                prefixIcon: Icon(Icons.search),
-                border: OutlineInputBorder(),
+            padding: EdgeInsets.all(8.0),
+            child: Material(
+              borderRadius: BorderRadius.circular(50.0),
+              elevation: 20.0,
+              borderOnForeground: false,
+              shadowColor: Colors.black,
+              child: TextField(
+                cursorColor: Colors.black,
+                decoration: InputDecoration(
+                  fillColor: Colors.grey[300],
+                  filled: true,
+                  hintText: 'Search...',
+                  prefixIcon: Icon(Icons.search, color: Colors.grey[400]),
+                  border: OutlineInputBorder(
+                    borderRadius: const BorderRadius.all(Radius.circular(50.0)),
+                    borderSide: BorderSide(
+                      width: 0,
+                      style: BorderStyle.none,
+                    ),
+                  ),
+                ),
               ),
             ),
-          ),
-          TabBar(
-            controller: _tabController,
-            tabs: const [
-              Tab(
-                  child: Text('Phone Number',
-                      style: TextStyle(color: Colors.black))),
-              Tab(
-                  child: Text('PaySatu ID',
-                      style: TextStyle(color: Colors.black))),
-              Tab(
-                  child: Text('Bank account',
-                      style: TextStyle(color: Colors.black))),
-            ],
           ),
           Expanded(
             child: TabBarView(
@@ -66,25 +98,52 @@ class _TransferScreenState extends State<TransferScreen>
                 // Contacts for Bank Account tab
                 ListView(
                   children: const [
-                    ListTile(title: Text('Contact 1')),
-                    ListTile(title: Text('Contact 2')),
-                    ListTile(title: Text('Contact 3')),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 7'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 8'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 9'),
+                    ),
                   ],
                 ),
                 // Contacts for UPI ID tab
                 ListView(
                   children: const [
-                    ListTile(title: Text('Contact 4')),
-                    ListTile(title: Text('Contact 5')),
-                    ListTile(title: Text('Contact 6')),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 7'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 8'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 9'),
+                    ),
                   ],
                 ),
                 // Contacts for Phone Number tab
                 ListView(
                   children: const [
-                    ListTile(title: Text('Contact 7')),
-                    ListTile(title: Text('Contact 8')),
-                    ListTile(title: Text('Contact 9')),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 7'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 8'),
+                    ),
+                    ListTile(
+                      leading: Icon(Icons.person), // Add the Icon widget here
+                      title: Text('Contact 9'),
+                    ),
                   ],
                 ),
               ],
@@ -93,10 +152,14 @@ class _TransferScreenState extends State<TransferScreen>
         ],
       ),
       floatingActionButton: FloatingActionButton(
-        onPressed: () {
-          // Perform action when the floating button is pressed
-        },
-        child: Icon(Icons.add),
+        child: Container(
+          width: 60,
+          height: 60,
+          child: Icon(Icons.add),
+          decoration: BoxDecoration(
+              shape: BoxShape.circle, gradient: AppColors.gradientColor),
+        ),
+        onPressed: () {},
       ),
     );
   }

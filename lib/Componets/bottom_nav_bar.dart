@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
-import '../Screens/History_Screen.dart';
-import '../Screens/ProfileScreen().dart';
-import '../Screens/home_screen.dart';
+import '../Screens/HistoryScreen.dart';
+import '../Screens/ProfileScreen.dart';
+import '../Screens/homescreen.dart';
 
 class CustomBottomNavBar extends StatefulWidget {
   final int currentIndex;

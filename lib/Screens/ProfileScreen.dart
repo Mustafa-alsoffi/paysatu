@@ -11,8 +11,7 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  String _photoUrl =
-      'https://www.trendrr.net/wp-content/uploads/2017/06/Deepika-Padukone-1.jpg';
+  String _photoUrl = '';
   String _name = 'GAAFAR';
   String _email = 'abdullahmohmed34@gmail.com';
   String _phone = '+966502159213';

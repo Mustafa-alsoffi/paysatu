@@ -1,0 +1,67 @@
+{
+  "project_info": {
+    "project_number": "46779380086",
+    "project_id": "paysatu-c663e",
+    "storage_bucket": "paysatu-c663e.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46779380086:android:b001a84c39b6bbb40e0a57",
+        "android_client_info": {
+          "package_name": "com.cyberrocks.paysatu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHHVpTQ69veVvd8ZB0jWmhldrclWATm3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46779380086:android:84e3c529dd83e8c40e0a57",
+        "android_client_info": {
+          "package_name": "com.example.paysatu"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHHVpTQ69veVvd8ZB0jWmhldrclWATm3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:46779380086:android:161ca9aef8a6bea50e0a57",
+        "android_client_info": {
+          "package_name": "io.flutter.plugins.firebase.messaging.example"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBHHVpTQ69veVvd8ZB0jWmhldrclWATm3o"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

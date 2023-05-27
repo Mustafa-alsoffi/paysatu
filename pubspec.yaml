@@ -33,9 +33,13 @@ dependencies:
   page_transition: ^2.0.9
   animated_bottom_navigation_bar: ^1.2.0
   image_picker: ^0.8.7+5
+  firebase_messaging: ^14.6.1
+  firebase_core_platform_interface: ^4.5.1
+  flutter_local_notifications: ^13.0.0
 
   flutter:
     sdk: flutter
+  overlay_support: ^2.1.0
 
 dev_dependencies:
   flutter_test:

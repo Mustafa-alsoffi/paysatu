@@ -1,14 +1,60 @@
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:paysatu/Screens/send_to_screen.dart';
 
 import '../Componets/bottom_nav_bar.dart';
-import 'Check_balance.dart';
-import 'History_Screen.dart';
-import 'ProfileScreen().dart';
+import 'CheckBalance.dart';
 import 'transfer_screen.dart';
 import 'package:paysatu/utils/constants.dart';
 
+import 'package:flutter/material.dart';
+import 'package:paysatu/utils/constants.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
+import 'package:firebase_core/firebase_core.dart';
+
+final FirebaseMessaging _firebaseMessaging = FirebaseMessaging.instance;
+
 class HomeScreen extends StatelessWidget {
+  late final FirebaseMessaging _messaging;
+
+  void requestPermission() async {
+    NotificationSettings settings = await _firebaseMessaging.requestPermission(
+      alert: true,
+      badge: true,
+      sound: true,
+    );
+
+    if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+      print('Permission granted');
+    } else {
+      print('Permission denied');
+    }
+  }
+
+  // void registerNotification() async {
+  //   //...
+
+  //   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
+  //     print('User granted permission');
+
+  //     // For handling the received notifications
+  //     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  //       // Parse the message received
+  //       PushNotification notification = PushNotification(
+  //         title: message.notification?.title,
+  //         body: message.notification?.body,
+  //       );
+
+  //       setState(() {
+  //         _notificationInfo = notification;
+  //         _totalNotifications++;
+  //       });
+  //     });
+  //   } else {
+  //     print('User declined or has not accepted permission');
+  //   }
+  // }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
