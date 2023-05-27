@@ -30,30 +30,85 @@ class HistoryScreen extends StatefulWidget {
 class _HistoryScreenState extends State<HistoryScreen> {
   List<Transaction> transactionList = [
     Transaction(
-      name: 'Alice',
+      name: 'gaafar',
       number: '1234567890',
       upiId: 'alice@bank',
-      amount: '+\$2000.00',
-      type: 'Received',
+      amount: '-RM2000.00',
+      type: 'Paid',
       date: DateTime.now().subtract(Duration(hours: 2)),
       iconData: Icons.account_circle,
     ),
     Transaction(
-      name: 'Bob',
+      name: 'furqan',
       number: '0987654321',
       upiId: 'bob@bank',
-      amount: '-\$1000.00',
+      amount: '-RM1000.00',
       type: 'Paid',
       date: DateTime.now().subtract(Duration(days: 1)),
       iconData: Icons.account_circle,
     ),
     Transaction(
-      name: 'Charlie',
+      name: 'ahmed',
       number: '1122334455',
       upiId: 'charlie@bank',
-      amount: '+\$5000.00',
+      amount: '+'
+          'RM5000.00', // Can you create a random bank account number for everyone
       type: 'Received',
       date: DateTime(2023, 5, 20),
+      iconData: Icons.account_circle,
+    ),
+    Transaction(
+      name: 'Aiman',
+      number: '1234567890',
+      upiId: 'alice@bank',
+      amount: '+RM2000.00',
+      type: 'Received',
+      date: DateTime.now().subtract(Duration(hours: 2)),
+      iconData: Icons.account_circle,
+    ),
+    Transaction(
+      name: 'Mustafa',
+      number: '1234567890',
+      upiId: 'alice@bank',
+      amount: '+RM2000.00',
+      type: 'Received',
+      date: DateTime.now().subtract(Duration(hours: 2)),
+      iconData: Icons.account_circle,
+    ),
+    Transaction(
+      name: 'Nor',
+      number: '1234567890',
+      upiId: 'alice@bank',
+      amount: '-RM2000.00',
+      type: 'Paid',
+      date: DateTime.now().subtract(Duration(hours: 2)),
+      iconData: Icons.account_circle,
+    ),
+    Transaction(
+      name: 'loai',
+      number: '1234567890',
+      upiId: 'alice@bank',
+      amount: '+RM2000.00',
+      type: 'Received',
+      date: DateTime.now().subtract(Duration(hours: 2)),
+      iconData: Icons.account_circle,
+    ),
+    Transaction(
+      name: 'abdallah',
+      number: '1234567890',
+      upiId: 'alice@bank',
+      amount: '+RM2000.00',
+      type: 'Received',
+      date: DateTime.now().subtract(Duration(hours: 2)),
+      iconData: Icons.account_circle,
+    ),
+    Transaction(
+      name: 'Alice',
+      number: '1234567890',
+      upiId: 'alice@bank',
+      amount: '-RM2000.00',
+      type: 'Paid',
+      date: DateTime.now().subtract(Duration(hours: 2)),
       iconData: Icons.account_circle,
     ),
   ];
@@ -64,28 +119,20 @@ class _HistoryScreenState extends State<HistoryScreen> {
       appBar: AppBar(
         title: Row(
           children: [
-            Icon(Icons.person),
             SizedBox(width: 8),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('User Name'),
-                Text('User ID'),
+                Text('History'),
               ],
             ),
             Spacer(),
-            IconButton(
-              icon: Icon(Icons.filter_list),
-              onPressed: () {
-                // TODO: implement filter logic
-              },
-            ),
-            SizedBox(width: 8),
-            Icon(Icons.fingerprint),
             SizedBox(width: 8),
             Icon(Icons.help),
           ],
         ),
+        centerTitle: true,
+        automaticallyImplyLeading: false, // this is what you need
       ),
       body: Column(
         children: [
