@@ -111,15 +111,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 alignment: Alignment.bottomRight,
                 children: [
                   Positioned.fill(
-                    child: Image.network(
-                      _photoUrl,
-                      errorBuilder: (BuildContext context, Object exception,
-                          StackTrace? stackTrace) {
-                        return Image.asset(
-                            'assets/profile_placeholder'); // Replace with your placeholder image asset path
-                      },
-                      fit: BoxFit.cover,
+                    child: CircleAvatar(
+                      radius: 50,
+                      backgroundImage: AssetImage('assets/profile_photo.jpg'),
                     ),
+                    // Replace with your placeholder image asset path
                   ),
                   Padding(
                     padding: const EdgeInsets.all(8.0),
