@@ -11,7 +11,7 @@ class CheckBalance extends StatelessWidget {
             Navigator.pop(context);
           },
         ),
-        title: Text('Send to'),
+        title: Text('Balance'),
         actions: [
           IconButton(
             icon: Icon(Icons.help_outline),
@@ -21,7 +21,10 @@ class CheckBalance extends StatelessWidget {
         flexibleSpace: Container(
           decoration: BoxDecoration(
             gradient: LinearGradient(
-              colors: [Colors.blue, Colors.purple],
+              colors: [
+                Color.fromARGB(235, 3, 3, 210),
+                Color.fromARGB(254, 54, 54, 246)
+              ],
               begin: Alignment.topLeft,
               end: Alignment.bottomRight,
             ),
@@ -34,9 +37,29 @@ class CheckBalance extends StatelessWidget {
             child: ListView.builder(
               itemCount: 5,
               itemBuilder: (context, index) {
-                final bankIcon = Icons.account_balance;
-                final bankAccountNumber = '1234567890';
-                final bankName = 'Bank $index';
+                // Define the bank images and names in a list
+                final bankImages = [
+                  'assets/images/CIMB-logo.png',
+                  'assets/images/Maybank_logo.png',
+                  'assets/images/Public_Bank_Berhad_logo.png',
+                  'assets/images/RHB_Logo.png',
+                  'assets/images/logo_hong_leong.png',
+                ];
+                final bankNames = [
+                  'CIMB Bank',
+                  'Maybank Bank',
+                  'Public Bank',
+                  'RHB Bank',
+                  'Hong Leong Bank',
+                ];
+                // Define the bank account numbers in a list
+                final bankAccountNumbers = [
+                  '1234567890',
+                  '2345678901',
+                  '3456789012',
+                  '4567890123',
+                  '5678901234',
+                ];
 
                 return Padding(
                   padding: EdgeInsets.all(8),
@@ -55,17 +78,46 @@ class CheckBalance extends StatelessWidget {
                         ),
                       ],
                     ),
-                    child: ListTile(
-                      leading: Icon(bankIcon),
-                      title: Row(
-                        children: [
-                          Text('Bank $index'),
-                          SizedBox(width: 8),
-                          Icon(Icons.arrow_forward),
-                        ],
+                    child: GestureDetector(
+                      onTap: () {
+                        // Navigate to another page
+                        // Replace 'BankDetailsPage' with the actual page you want to navigate to
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                            builder: (context) => BankDetailsPage(),
+                          ),
+                        );
+                      },
+                      child: ListTile(
+                        leading: Image.asset(
+                          bankImages[index],
+                          width: 50,
+                          height: 50,
+                        ),
+                        title: Text(
+                          // Use the bank names from the list
+                          bankNames[index],
+                          style: TextStyle(fontWeight: FontWeight.bold),
+                        ),
+                        subtitle: RichText(
+                          text: TextSpan(
+                            children: [
+                              TextSpan(
+                                text: '',
+                                style: TextStyle(
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),
+                              ),
+                              TextSpan(
+                                text: bankAccountNumbers[index],
+                                style: TextStyle(color: Colors.black),
+                              ),
+                            ],
+                          ),
+                        ),
                       ),
-                      subtitle: Text(bankAccountNumber),
-                      onTap: () {},
                     ),
                   ),
                 );
@@ -73,6 +125,20 @@ class CheckBalance extends StatelessWidget {
             ),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class BankDetailsPage extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Bank Details'),
+      ),
+      body: Center(
+        child: Text('Bank Details Page'),
       ),
     );
   }

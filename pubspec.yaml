@@ -36,6 +36,10 @@ dependencies:
   firebase_messaging: ^14.6.1
   firebase_core_platform_interface: ^4.5.1
   flutter_local_notifications: ^13.0.0
+  flutter_vector_icons: ^2.0.0
+  animated_login: ^1.7.0
+  form_field_validator: ^1.1.0
+
 
   flutter:
     sdk: flutter

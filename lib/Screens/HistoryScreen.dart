@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../Componets/bottom_nav_bar.dart';
+import '../utils/constants.dart';
 
 class Transaction {
   final String name;
@@ -112,11 +113,23 @@ class _HistoryScreenState extends State<HistoryScreen> {
       iconData: Icons.account_circle,
     ),
   ];
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        backgroundColor: Colors.blue,
+        flexibleSpace: Container(
+          decoration: BoxDecoration(
+            gradient: LinearGradient(
+              colors: [
+                Color.fromARGB(235, 3, 3, 210),
+                Color.fromARGB(254, 54, 54, 246)
+              ],
+              begin: Alignment.topLeft,
+              end: Alignment.bottomRight,
+            ),
+          ),
+        ),
         title: Row(
           children: [
             SizedBox(width: 8),
@@ -132,7 +145,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
           ],
         ),
         centerTitle: true,
-        automaticallyImplyLeading: false, // this is what you need
+        automaticallyImplyLeading: false,
       ),
       body: Column(
         children: [
@@ -142,8 +155,7 @@ class _HistoryScreenState extends State<HistoryScreen> {
               decoration: InputDecoration(
                 hintText: 'Search by name, number, or UPI ID.',
                 border: OutlineInputBorder(
-                  borderRadius:
-                      BorderRadius.circular(20), // added border radius
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 prefixIcon: Icon(Icons.search),
               ),
@@ -157,7 +169,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                 return Padding(
                   padding: EdgeInsets.symmetric(horizontal: 16, vertical: 8),
                   child: Dismissible(
-                    // added swipe gesture
                     key: Key(transaction.name + transaction.number),
                     background: Container(color: Colors.red),
                     onDismissed: (direction) {
@@ -166,7 +177,6 @@ class _HistoryScreenState extends State<HistoryScreen> {
                       });
                     },
                     child: Card(
-                      // original card widget
                       elevation: 4,
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(10),
@@ -179,24 +189,24 @@ class _HistoryScreenState extends State<HistoryScreen> {
                               ? Colors.red
                               : Colors.green,
                         ),
-                        title:
-                            Text('${transaction.name} (${transaction.number})'),
+                        title: Text(
+                            '${transaction.name} (${transaction.number})'),
                         subtitle: Text(
                             '${transaction.type} via ${transaction.upiId}'),
                         trailing: Column(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text(
-                                transaction.amount,
-                                style: TextStyle(
-                                  fontWeight: FontWeight.bold,
-                                  fontSize: 18,
-                                ),
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Text(
+                              transaction.amount,
+                              style: TextStyle(
+                                fontWeight: FontWeight.bold,
+                                fontSize: 18,
                               ),
-                              Text(_formatDate(transaction.date)),
-                            ]),
+                            ),
+                            Text(_formatDate(transaction.date)),
+                          ],
+                        ),
                         onTap: () {
-                          // callback when tapped
                           // TODO: implement edit logic
                         },
                       ),

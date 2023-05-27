@@ -5,6 +5,7 @@ import 'package:paysatu/utils/constants.dart';
 import 'Screens/HomeScreen.dart';
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:firebase_core/firebase_core.dart';
+import 'Screens/SignUp.dart';
 import 'firebase_options.dart';
 import 'package:flutter/foundation.dart';
 
@@ -141,7 +142,7 @@ class _Application extends State<Application> {
               displayColor: AppColors.colorMap[500], //<-- SEE HERE
             ),
       ),
-      home: HomeScreen(),
+      home: StartSignUp(),
     );
   }
 }
@@ -159,7 +160,7 @@ class MyApp extends StatelessWidget {
               displayColor: AppColors.colorMap[500], //<-- SEE HERE
             ),
       ),
-      home: HomeScreen(),
+      home: StartSignUp(),
     );
   }
 }
