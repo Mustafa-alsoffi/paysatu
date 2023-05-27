@@ -100,15 +100,18 @@ class _TransferScreenState extends State<TransferScreen>
                   children: const [
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 7'),
+                      title: Text('Jack'),
+                      subtitle: Text('1234567890'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 8'),
+                      title: Text('Max'),
+                      subtitle: Text('1234567890'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 9'),
+                      title: Text('Khai'),
+                      subtitle: Text('1234567890'),
                     ),
                   ],
                 ),
@@ -117,15 +120,15 @@ class _TransferScreenState extends State<TransferScreen>
                   children: const [
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 7'),
+                      title: Text('Jack@xyz.com'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 8'),
+                      title: Text('Max@xyx.com'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 9'),
+                      title: Text('Khai@dds.com'),
                     ),
                   ],
                 ),
@@ -134,15 +137,18 @@ class _TransferScreenState extends State<TransferScreen>
                   children: const [
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 7'),
+                      title: Text('Jack'),
+                      subtitle: Text('1234567890'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 8'),
+                      title: Text('Max'),
+                      subtitle: Text('1234567890'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Contact 9'),
+                      title: Text('Khai'),
+                      subtitle: Text('1234567890'),
                     ),
                   ],
                 ),
