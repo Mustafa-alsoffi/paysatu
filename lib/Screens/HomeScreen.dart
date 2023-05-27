@@ -31,30 +31,6 @@ class HomeScreen extends StatelessWidget {
     }
   }
 
-  // void registerNotification() async {
-  //   //...
-
-  //   if (settings.authorizationStatus == AuthorizationStatus.authorized) {
-  //     print('User granted permission');
-
-  //     // For handling the received notifications
-  //     FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-  //       // Parse the message received
-  //       PushNotification notification = PushNotification(
-  //         title: message.notification?.title,
-  //         body: message.notification?.body,
-  //       );
-
-  //       setState(() {
-  //         _notificationInfo = notification;
-  //         _totalNotifications++;
-  //       });
-  //     });
-  //   } else {
-  //     print('User declined or has not accepted permission');
-  //   }
-  // }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -163,8 +139,51 @@ class HomeScreen extends StatelessWidget {
                   ),
                 ),
                 const SizedBox(height: 16),
-                const SingleChildScrollView(
-                  scrollDirection: Axis.horizontal,
+                Padding(
+                  padding: EdgeInsets.symmetric(horizontal: 16),
+                  child: Text(
+                    'Recent Transactions',
+                    style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.bold,
+                      color: Colors.blue,
+                    ),
+                  ),
+                ),
+                SizedBox(height: 8),
+                Container(
+                  height: 420,
+                  child: SingleChildScrollView(
+                    scrollDirection: Axis.vertical,
+                    child: Column(
+                      children: [
+                        TransactionItem(
+                          avatar: AssetImage('assets/images/avatar1.jpg'),
+                          name: 'Alice Smith',
+                          amount: '\$100.00',
+                          status: 'Sent',
+                        ),
+                        TransactionItem(
+                          avatar: AssetImage('assets/images/avatar1.jpg'),
+                          name: 'Bob Jones',
+                          amount: '\$50.00',
+                          status: 'Received',
+                        ),
+                        TransactionItem(
+                          avatar: AssetImage('assets/images/avatar1.jpg'),
+                          name: 'Charlie Brown',
+                          amount: '\$25.00',
+                          status: 'Pending',
+                        ),
+                        TransactionItem(
+                          avatar: AssetImage('assets/images/avatar1.jpg'),
+                          name: 'David Lee',
+                          amount: '\$75.00',
+                          status: 'Failed',
+                        ),
+                      ],
+                    ),
+                  ),
                 ),
               ],
             ),
@@ -228,9 +247,128 @@ class _ActionItemState extends State<ActionItem> {
           children: [
             Icon(widget.icon),
             const SizedBox(height: 8),
-            Text(widget.label)
+            Text(widget.label),
           ],
         ),
+      ),
+    );
+  }
+}
+
+class AccountItem extends StatelessWidget {
+  final IconData icon;
+  final String label;
+  final String balance;
+
+  const AccountItem({
+    required this.icon,
+    required this.label,
+    required this.balance,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 8),
+      width: double.infinity,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(15),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 5,
+            spreadRadius: 2,
+            offset: Offset(0, 2),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          Icon(icon, color: Colors.blue),
+          Text(
+            label,
+            style: TextStyle(
+              fontWeight: FontWeight.bold,
+              color: Colors.blue,
+            ),
+          ),
+          Text(
+            balance,
+            style: TextStyle(
+              fontSize: 18,
+              fontWeight: FontWeight.bold,
+            ),
+          ),
+        ],
+      ),
+    );
+  }
+}
+
+class TransactionItem extends StatelessWidget {
+  final ImageProvider avatar;
+  final String name;
+  final String amount;
+  final String status;
+
+  const TransactionItem({
+    required this.avatar,
+    required this.name,
+    required this.amount,
+    required this.status,
+  });
+
+  @override
+  Widget build(BuildContext context) {
+    // Define a map of colors for each status
+    final statusColors = {
+      'Sent': Colors.red[600],
+      'Received': Colors.green[600],
+      'Pending': Colors.black,
+      'Failed': Colors.black,
+    };
+
+    return Container(
+      margin: EdgeInsets.symmetric(vertical: 4),
+      width: 365,
+      height: 100,
+      decoration: BoxDecoration(
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(30),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12,
+            blurRadius: 5,
+            spreadRadius: 2,
+            offset: Offset(0, 3),
+          ),
+        ],
+      ),
+      child: Row(
+        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+        children: [
+          SizedBox(width: 8),
+          CircleAvatar(radius: 30, backgroundImage: avatar),
+          SizedBox(width: 8),
+          Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(name, style: TextStyle(fontWeight: FontWeight.bold)),
+              Text(status, style: TextStyle(color: Colors.grey)),
+            ],
+          ),
+          Spacer(),
+          // Use the statusColors map to get the color for the amount
+          Text(
+            amount,
+            style: TextStyle(fontSize: 18, color: statusColors[status]),
+          ),
+          SizedBox(width: 16),
+        ],
       ),
     );
   }
