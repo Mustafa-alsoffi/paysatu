@@ -28,13 +28,6 @@ class _SignUpScreenState extends State<SignUpScreen> {
   final _formKey = GlobalKey<FormState>();
   final _phoneController = TextEditingController();
 
-  final phoneValidator = MultiValidator([
-    RequiredValidator(errorText: 'Please enter your phone number'),
-    MinLengthValidator(10, errorText: 'Phone number must be at least 10 digits long'),
-    MaxLengthValidator(10, errorText: 'Phone number must not be more than 10 digits long'),
-    PatternValidator(r'^[0-9]+$', errorText: 'Phone number must contain only digits')
-  ]);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,11 +51,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
                 inputFormatters: [
                   FilteringTextInputFormatter.digitsOnly,
                 ],
-                validator: phoneValidator,
                 decoration: InputDecoration(
                   prefixIcon: Icon(MaterialCommunityIcons.phone),
                   border: OutlineInputBorder(),
                 ),
+                validator: RequiredValidator(errorText: 'Phone number is required'),
               ),
               SizedBox(height: 16),
               ElevatedButton(
@@ -99,13 +92,6 @@ class _OTPScreenState extends State<OTPScreen> {
   final _formKey = GlobalKey<FormState>();
   final _otpController = TextEditingController();
 
-  final otpValidator = MultiValidator([
-    RequiredValidator(errorText: 'Please enter the OTP'),
-    MinLengthValidator(6, errorText: 'OTP must be exactly 6 digits long'),
-    MaxLengthValidator(6, errorText: 'OTP must be exactly 6 digits long'),
-    PatternValidator(r'^[0-9]+$', errorText: 'OTP must contain only digits')
-  ]);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -130,11 +116,11 @@ class _OTPScreenState extends State<OTPScreen> {
                   FilteringTextInputFormatter.digitsOnly,
                   LengthLimitingTextInputFormatter(6),
                 ],
-                validator: otpValidator,
                 decoration: InputDecoration(
                   prefixIcon: Icon(MaterialCommunityIcons.lock),
                   border: OutlineInputBorder(),
                 ),
+                validator: RequiredValidator(errorText: 'OTP is required'),
               ),
               SizedBox(height: 16),
               ElevatedButton(
@@ -166,6 +152,14 @@ class BankScreen extends StatefulWidget {
 class _BankScreenState extends State<BankScreen> {
   String? selectedBank;
   int? selectedIndex;
+  final bankNames = [
+    'CIMB Bank',
+    'Maybank',
+    'Public Bank',
+    'RHB Bank',
+    'Hong Leong Bank',
+    'Other Bank',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -179,25 +173,24 @@ class _BankScreenState extends State<BankScreen> {
           children: [
             SizedBox(height: 16.0),
             Text(
-              'Choose a bank account',
+              'Select Your Bank',
               style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
             ),
             SizedBox(height: 8.0),
             ListView.builder(
               shrinkWrap: true,
-              itemCount: 4,
+              itemCount: bankNames.length,
               itemBuilder: (context, index) {
                 return ListTile(
                   leading: Icon(Icons.account_balance, color: Colors.blue),
-                  title: Text('Bank account ${index + 1}'),
-                  subtitle: Text('Balance \$${(index + 1) * 100}.00'),
+                  title: Text(bankNames[index]),
                   trailing: selectedIndex == index
                       ? Icon(Icons.check_circle, color: Colors.green)
                       : Icon(Icons.radio_button_off_outlined),
                   onTap: () {
                     setState(() {
                       selectedIndex = index;
-                      selectedBank = 'Bank account ${index + 1}';
+                      selectedBank = bankNames[index];
                     });
                   },
                 );
@@ -210,10 +203,78 @@ class _BankScreenState extends State<BankScreen> {
                   : () => Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => PinScreen(selectedBank!),
+                          builder: (context) => SelectAccountScreen(selectedBank!),
                         ),
                       ),
               child: Text('Next'),
+            ),
+          ],
+        ),
+      ),
+    );
+  }
+}
+
+class SelectAccountScreen extends StatefulWidget {
+  final String bank;
+  SelectAccountScreen(this.bank);
+
+  @override
+  _SelectAccountScreenState createState() => _SelectAccountScreenState();
+}
+
+class _SelectAccountScreenState extends State<SelectAccountScreen> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Select Account'),
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            Text(
+              'Your ${widget.bank} account',
+              style: TextStyle(fontSize: 18.0, fontWeight: FontWeight.bold),
+            ),
+            SizedBox(height: 16.0),
+            Container(
+              padding: EdgeInsets.all(16.0),
+              decoration: BoxDecoration(
+                border: Border.all(color: Colors.blue),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Text(
+                    'Holder\'s name: Jeremy Yon',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                  Text(
+                    'Bank account: 1234567890',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                  Text(
+                    'Branch: KLCC, Kuala Lumpur',
+                    style: TextStyle(fontSize: 16.0),
+                  ),
+                ],
+              ),
+              
+            ),
+            SizedBox(height: 16.0),
+            ElevatedButton(
+              onPressed: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (context) => PinScreen(widget.bank),
+                  ),
+                );
+              },
+              child: Text('Continue'),
             ),
           ],
         ),
@@ -235,18 +296,11 @@ class _PinScreenState extends State<PinScreen> {
   final _formKey = GlobalKey<FormState>();
   final _pinController = TextEditingController();
 
-  final pinValidator = MultiValidator([
-    RequiredValidator(errorText: 'Please enter your PIN'),
-    MinLengthValidator(4, errorText: 'PIN must be exactly 4 digits long'),
-    MaxLengthValidator(4, errorText: 'PIN must be exactly 4 digits long'),
-    PatternValidator(r'^[0-9]+$', errorText: 'PIN must contain only digits')
-  ]);
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text('Enter PIN'),
+        title: Text('Setup PaySatu'),
       ),
       body: Center(
         child: Form(
@@ -255,18 +309,13 @@ class _PinScreenState extends State<PinScreen> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                'Enter your PIN for your ${widget.bank} account',
+                'Setup your PaySatu ID (xyz@paysatu)',
                 style: TextStyle(fontSize: 18),
               ),
               SizedBox(height: 16),
               TextFormField(
                 controller: _pinController,
-                keyboardType: TextInputType.number,
-                inputFormatters: [
-                  FilteringTextInputFormatter.digitsOnly,
-                  LengthLimitingTextInputFormatter(4),
-                ],
-                validator: pinValidator,
+                keyboardType: TextInputType.text,
                 decoration: InputDecoration(
                   prefixIcon: Icon(MaterialCommunityIcons.lock),
                   border: OutlineInputBorder(),
@@ -277,24 +326,36 @@ class _PinScreenState extends State<PinScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     showDialog(
-                      context: context,
-                      builder: (context) => AlertDialog(
-                        title: Text('Setup Complete'),
-                        content: Text('You have successfully completed the setup process.'),
-                        actions: [
-                          TextButton(
-                            onPressed: () {
-                              Navigator.pushAndRemoveUntil(
-                                context,
-                                MaterialPageRoute(builder: (context) => HomeScreen()),
-                                (Route<dynamic> route) => false,
-                              );
-                            },
-                            child: Text('OK'),
-                          ),
-                        ],
-                      ),
-                    );
+  context: context,
+  builder: (context) => AlertDialog(
+    title: Text('Setup Complete'),
+    content: Row(
+      children: [
+        Icon(
+          Icons.check_circle,
+          color: Colors.green,
+        ),
+        SizedBox(width: 10),
+        Expanded(
+          child: Text('You have successfully completed the setup process.'),
+        ),
+      ],
+    ),
+    actions: [
+      TextButton(
+        onPressed: () {
+          Navigator.pushAndRemoveUntil(
+            context,
+            MaterialPageRoute(builder: (context) => HomeScreen()),
+            (Route<dynamic> route) => false,
+          );
+        },
+        child: Text('OK'),
+      ),
+    ],
+  ),
+);
+;
                   }
                 },
                 child: Text('Next'),
