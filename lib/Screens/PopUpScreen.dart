@@ -3,6 +3,8 @@ import 'package:paysatu/Screens/HomeScreen.dart';
 import 'package:paysatu/Screens/SignUp.dart';
 import 'package:paysatu/Screens/PINScreen.dart';
 
+import 'PaymentScreen.dart';
+
 class PaymentPopup extends StatelessWidget {
   final String name; // the name of the requester
   final double amount; // the amount of money requested
@@ -51,7 +53,7 @@ class PaymentPopup extends StatelessWidget {
                 // handle payment logic here
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) => PINScreen(),
+                    builder: (context) => PaymentScreen(),
                   ),
                 );
               },

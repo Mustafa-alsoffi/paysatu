@@ -144,11 +144,7 @@ class _Application extends State<Application> {
               displayColor: AppColors.colorMap[500], //<-- SEE HERE
             ),
       ),
-<<<<<<< HEAD
-      home: StartSignUp(),
-=======
       home: SignUpScreen(),
->>>>>>> 5153c461b51d4b24e72e56720070a2ac1daa5728
     );
   }
 }
@@ -166,11 +162,7 @@ class MyApp extends StatelessWidget {
               displayColor: AppColors.colorMap[500], //<-- SEE HERE
             ),
       ),
-<<<<<<< HEAD
-      home: StartSignUp(),
-=======
       home: SignUpScreen(),
->>>>>>> 5153c461b51d4b24e72e56720070a2ac1daa5728
     );
   }
 }

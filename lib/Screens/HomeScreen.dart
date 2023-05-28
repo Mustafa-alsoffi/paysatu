@@ -374,7 +374,7 @@ class TransactionItem extends StatelessWidget {
             onPressed: () {
               Navigator.of(context).push(
                 MaterialPageRoute(
-                  builder: (context) => PaymentScreen(),
+                  builder: (context) => PaymentPopup(name: 'Jeremy', amount: 0),
                 ),
               );
             },

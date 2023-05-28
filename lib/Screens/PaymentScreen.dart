@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:paysatu/Screens/PINScreen.dart';
 
 import 'PopUpScreen.dart';
 
@@ -139,8 +140,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
                 // Perform payment logic here
                 Navigator.of(context).push(
                   MaterialPageRoute(
-                    builder: (context) =>
-                        PaymentPopup(name: "Jeremy", amount: 50),
+                    builder: (context) => PINScreen(),
                   ),
                 );
               },

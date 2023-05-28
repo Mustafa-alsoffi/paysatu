@@ -342,21 +342,6 @@ class _PinScreenState extends State<PinScreen> {
                       context: context,
                       builder: (context) => AlertDialog(
                         title: Text('Setup Complete'),
-<<<<<<< HEAD
-                        content: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Icon(
-                                  Icons.check_circle,
-                                  color: Colors.green,
-                                ),
-                                SizedBox(width: 10),
-                                Expanded(
-                                  child: Text('You have successfully completed the setup process.'),
-                                ),
-                              ],
-=======
                         content: Row(
                           children: [
                             Icon(
@@ -367,7 +352,6 @@ class _PinScreenState extends State<PinScreen> {
                             Expanded(
                               child: Text(
                                   'You have successfully completed the setup process.'),
->>>>>>> 5153c461b51d4b24e72e56720070a2ac1daa5728
                             ),
                           ],
                         ),
@@ -376,12 +360,8 @@ class _PinScreenState extends State<PinScreen> {
                             onPressed: () {
                               Navigator.pushAndRemoveUntil(
                                 context,
-<<<<<<< HEAD
-                                MaterialPageRoute(builder: (context) => HomeScreen()),
-=======
                                 MaterialPageRoute(
                                     builder: (context) => HomeScreen()),
->>>>>>> 5153c461b51d4b24e72e56720070a2ac1daa5728
                                 (Route<dynamic> route) => false,
                               );
                             },
@@ -390,10 +370,7 @@ class _PinScreenState extends State<PinScreen> {
                         ],
                       ),
                     );
-<<<<<<< HEAD
-=======
                     ;
->>>>>>> 5153c461b51d4b24e72e56720070a2ac1daa5728
                   }
                 },
                 child: Text('Next'),
