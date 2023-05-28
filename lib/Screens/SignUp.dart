@@ -9,6 +9,7 @@ class StartSignUp extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'Flutter Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
@@ -30,9 +31,12 @@ class _SignUpScreenState extends State<SignUpScreen> {
 
   final phoneValidator = MultiValidator([
     RequiredValidator(errorText: 'Please enter your phone number'),
-    MinLengthValidator(10, errorText: 'Phone number must be at least 10 digits long'),
-    MaxLengthValidator(10, errorText: 'Phone number must not be more than 10 digits long'),
-    PatternValidator(r'^[0-9]+$', errorText: 'Phone number must contain only digits')
+    MinLengthValidator(10,
+        errorText: 'Phone number must be at least 10 digits long'),
+    MaxLengthValidator(10,
+        errorText: 'Phone number must not be more than 10 digits long'),
+    PatternValidator(r'^[0-9]+$',
+        errorText: 'Phone number must contain only digits')
   ]);
 
   @override
@@ -280,13 +284,15 @@ class _PinScreenState extends State<PinScreen> {
                       context: context,
                       builder: (context) => AlertDialog(
                         title: Text('Setup Complete'),
-                        content: Text('You have successfully completed the setup process.'),
+                        content: Text(
+                            'You have successfully completed the setup process.'),
                         actions: [
                           TextButton(
                             onPressed: () {
                               Navigator.pushAndRemoveUntil(
                                 context,
-                                MaterialPageRoute(builder: (context) => HomeScreen()),
+                                MaterialPageRoute(
+                                    builder: (context) => HomeScreen()),
                                 (Route<dynamic> route) => false,
                               );
                             },

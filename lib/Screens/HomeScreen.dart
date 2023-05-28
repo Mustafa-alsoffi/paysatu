@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'ABDALLA GAAFAR',
+                    'Teow Soon Poh',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
