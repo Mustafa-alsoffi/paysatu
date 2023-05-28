@@ -64,7 +64,7 @@ class HomeScreen extends StatelessWidget {
                   ),
                   SizedBox(height: 8),
                   Text(
-                    'Teow Soon Poh',
+                    'Jeremy Yon',
                     style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.bold,
@@ -73,7 +73,7 @@ class HomeScreen extends StatelessWidget {
                     ),
                   ),
                   Text(
-                    'ID: 123456789',
+                    'ID: jeremy\@paysatu',
                     style: TextStyle(
                       fontSize: 14,
                       color: Colors.white,

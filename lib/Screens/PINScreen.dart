@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'HomeScreen.dart';
 
 class PINScreen extends StatefulWidget {
   const PINScreen({Key? key}) : super(key: key);
@@ -13,6 +14,44 @@ class _PINScreenState extends State<PINScreen> {
 
   // The color for the dart blue
   Color _dartBlue = Color(0xFF0175C2);
+
+  // Flag to track whether the payment was successful
+  bool _paymentSuccessful = false;
+
+  // Function to handle the verification process
+  void _verifyPin() {
+    // Perform your pin verification logic here
+
+    // Assuming the payment was successful, update the flag
+    setState(() {
+      _paymentSuccessful = true;
+    });
+
+    // Show the pop-up screen
+    showDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Payment Successful'),
+          content: Text('Your payment has been successfully processed.'),
+          actions: <Widget>[
+            TextButton(
+              onPressed: () {
+                // Close the pop-up screen
+                Navigator.of(context).pop();
+                // Navigate to the HomeScreen
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(builder: (context) => HomeScreen()),
+                );
+              },
+              child: Text('OK'),
+            ),
+          ],
+        );
+      },
+    );
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -65,9 +104,7 @@ class _PINScreenState extends State<PINScreen> {
             ),
             SizedBox(height: 20),
             ElevatedButton(
-              onPressed: () {
-                // Validate the pin and navigate to the next screen
-              },
+              onPressed: _verifyPin,
               child: Text('Verify'),
               style: ElevatedButton.styleFrom(
                 primary: _dartBlue,
