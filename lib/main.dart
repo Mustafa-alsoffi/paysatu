@@ -144,7 +144,7 @@ class _Application extends State<Application> {
               displayColor: AppColors.colorMap[500], //<-- SEE HERE
             ),
       ),
-      home: PINScreen(),
+      home: StartSignUp(),
     );
   }
 }
@@ -162,7 +162,7 @@ class MyApp extends StatelessWidget {
               displayColor: AppColors.colorMap[500], //<-- SEE HERE
             ),
       ),
-      home: PINScreen(),
+      home: StartSignUp(),
     );
   }
 }

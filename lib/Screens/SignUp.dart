@@ -295,6 +295,7 @@ class PinScreen extends StatefulWidget {
 class _PinScreenState extends State<PinScreen> {
   final _formKey = GlobalKey<FormState>();
   final _pinController = TextEditingController();
+  final _paySatuIdController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {
@@ -314,6 +315,16 @@ class _PinScreenState extends State<PinScreen> {
               ),
               SizedBox(height: 16),
               TextFormField(
+                controller: _paySatuIdController,
+                keyboardType: TextInputType.emailAddress,
+                decoration: InputDecoration(
+                  prefixIcon: Icon(Icons.email),
+                  labelText: 'PaySatu ID',
+                  border: OutlineInputBorder(),
+                ),
+              ),
+              SizedBox(height: 16),
+              TextFormField(
                 controller: _pinController,
                 keyboardType: TextInputType.text,
                 decoration: InputDecoration(
@@ -326,36 +337,39 @@ class _PinScreenState extends State<PinScreen> {
                 onPressed: () {
                   if (_formKey.currentState!.validate()) {
                     showDialog(
-  context: context,
-  builder: (context) => AlertDialog(
-    title: Text('Setup Complete'),
-    content: Row(
-      children: [
-        Icon(
-          Icons.check_circle,
-          color: Colors.green,
-        ),
-        SizedBox(width: 10),
-        Expanded(
-          child: Text('You have successfully completed the setup process.'),
-        ),
-      ],
-    ),
-    actions: [
-      TextButton(
-        onPressed: () {
-          Navigator.pushAndRemoveUntil(
-            context,
-            MaterialPageRoute(builder: (context) => HomeScreen()),
-            (Route<dynamic> route) => false,
-          );
-        },
-        child: Text('OK'),
-      ),
-    ],
-  ),
-);
-;
+                      context: context,
+                      builder: (context) => AlertDialog(
+                        title: Text('Setup Complete'),
+                        content: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Icon(
+                                  Icons.check_circle,
+                                  color: Colors.green,
+                                ),
+                                SizedBox(width: 10),
+                                Expanded(
+                                  child: Text('You have successfully completed the setup process.'),
+                                ),
+                              ],
+                            ),
+                          ],
+                        ),
+                        actions: [
+                          TextButton(
+                            onPressed: () {
+                              Navigator.pushAndRemoveUntil(
+                                context,
+                                MaterialPageRoute(builder: (context) => HomeScreen()),
+                                (Route<dynamic> route) => false,
+                              );
+                            },
+                            child: Text('OK'),
+                          ),
+                        ],
+                      ),
+                    );
                   }
                 },
                 child: Text('Next'),
