@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import 'PopUpScreen.dart';
+
 class PaymentScreen extends StatefulWidget {
   const PaymentScreen({Key? key}) : super(key: key);
 
@@ -31,16 +33,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
           Container(
             // Remove the color property
             // color: Colors.white,
-            decoration: BoxDecoration(
-              boxShadow: [
-                BoxShadow(
-                  color: Colors.grey.withOpacity(0.5),
-                  spreadRadius: 5,
-                  blurRadius: 7,
-                  offset: Offset(0, 3),
-                ),
-              ],
-            ),
+            decoration: BoxDecoration(),
             child: Padding(
               padding: const EdgeInsets.all(16.0),
               child: Column(
@@ -84,13 +77,7 @@ class _PaymentScreenState extends State<PaymentScreen> {
               // Remove the color property
               // color:
               //   Colors.blue[50],
-              decoration: BoxDecoration(boxShadow: [
-                BoxShadow(
-                    color: Colors.grey.withOpacity(0.5),
-                    spreadRadius: 5,
-                    blurRadius: 7,
-                    offset: Offset(0, -3)),
-              ]),
+
               child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: Column(
@@ -150,6 +137,12 @@ class _PaymentScreenState extends State<PaymentScreen> {
             child: ElevatedButton(
               onPressed: () {
                 // Perform payment logic here
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) =>
+                        PaymentPopup(name: "Jeremy", amount: 50),
+                  ),
+                );
               },
               child: Text('PAY', style: TextStyle(fontSize: 24.0)),
               style: ElevatedButton.styleFrom(

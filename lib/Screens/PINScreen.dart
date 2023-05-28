@@ -45,7 +45,7 @@ class _PINScreenState extends State<PINScreen> {
                   MaterialPageRoute(builder: (context) => HomeScreen()),
                 );
               },
-              child: Text('OK'),
+              child: Text('OK', style: TextStyle(color: Colors.black)),
             ),
           ],
         );

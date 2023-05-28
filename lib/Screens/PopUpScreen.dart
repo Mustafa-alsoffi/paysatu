@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:paysatu/Screens/HomeScreen.dart';
+import 'package:paysatu/Screens/SignUp.dart';
+import 'package:paysatu/Screens/PINScreen.dart';
 
 class PaymentPopup extends StatelessWidget {
   final String name; // the name of the requester
@@ -17,7 +20,7 @@ class PaymentPopup extends StatelessWidget {
           CircleAvatar(
             radius: 20, // change this to adjust the size of the avatar
             backgroundImage: AssetImage(
-                'assets/images/gaafar.png'), // changed this to use gaafar’s image
+                'assets/images/avatar1.jpg'), // changed this to use gaafar’s image
           ),
           SizedBox(width: 8), // add some space between the avatar and the name
           Text('Requested by ',
@@ -46,6 +49,11 @@ class PaymentPopup extends StatelessWidget {
             ElevatedButton.icon(
               onPressed: () {
                 // handle payment logic here
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => PINScreen(),
+                  ),
+                );
               },
               icon: Icon(Icons.check),
               label: Text(
@@ -81,6 +89,11 @@ class PaymentPopup extends StatelessWidget {
             OutlinedButton(
               onPressed: () {
                 // handle decline logic here
+                Navigator.of(context).push(
+                  MaterialPageRoute(
+                    builder: (context) => HomeScreen(),
+                  ),
+                );
               },
               child: Text(
                 'Decline',

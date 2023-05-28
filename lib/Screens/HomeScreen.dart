@@ -1,5 +1,7 @@
 import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
+import 'package:paysatu/Screens/PaymentScreen.dart';
+import 'package:paysatu/Screens/PopUpScreen.dart';
 import 'package:paysatu/Screens/send_to_screen.dart';
 
 import '../Componets/bottom_nav_bar.dart';
@@ -368,6 +370,16 @@ class TransactionItem extends StatelessWidget {
             style: TextStyle(fontSize: 18, color: statusColors[status]),
           ),
           SizedBox(width: 16),
+          TextButton(
+            onPressed: () {
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) => PaymentScreen(),
+                ),
+              );
+            },
+            child: Text(''),
+          )
         ],
       ),
     );

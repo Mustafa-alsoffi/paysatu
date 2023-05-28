@@ -120,15 +120,15 @@ class _TransferScreenState extends State<TransferScreen>
                   children: const [
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Jack@xyz.com'),
+                      title: Text('Jack@paysatu.com'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Max@xyx.com'),
+                      title: Text('Max@paysatu.com'),
                     ),
                     ListTile(
                       leading: Icon(Icons.person), // Add the Icon widget here
-                      title: Text('Khai@dds.com'),
+                      title: Text('Khai@paysatu.com'),
                     ),
                   ],
                 ),
