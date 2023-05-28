@@ -77,7 +77,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
     return Scaffold(
       extendBodyBehindAppBar: true,
       appBar: AppBar(
-        title: Text('Profile'),
+        title: Text('Profile', style: TextStyle(color: Colors.white)),
         elevation: 0,
         backgroundColor: Colors.transparent,
         // Set automaticallyImplyLeading to false
@@ -107,223 +107,137 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 alignment: Alignment.bottomRight,
                 children: [
                   Positioned(
-                      child:
-                          Stack(children: <Widget>[
+                      child: Stack(children: <Widget>[
                     Align(
                       alignment: Alignment.center,
-                      child:
-                          CircleAvatar(radius: 70, backgroundImage:
+                      child: CircleAvatar(
+                          radius: 70,
+                          backgroundImage:
                               AssetImage('assets/profile_photo.jpg')),
                     ),
                   ]) // Replace with your placeholder image asset path
                       ),
                   Padding(
-                    padding:
-                        const EdgeInsets.all(8.0),
-                    child:
-                        Row(mainAxisAlignment:
-                            MainAxisAlignment.end,
-                            children:
-                                [
-                      IconButton(
-                        iconSize:
-                            32,
-                        icon:
-                            Icon(Icons.photo, color:
-                                Colors.white),
-                        onPressed:
-                            _pickImageFromGallery,
-                      ),
-                      IconButton(
-                        iconSize:
-                            32,
-                        icon:
-                            Icon(Icons.camera_alt, color:
-                                Colors.white),
-                        onPressed:
-                            _takePhotoWithCamera,
-                      ),
-                    ]),
+                    padding: const EdgeInsets.all(8.0),
+                    child: Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          IconButton(
+                            iconSize: 32,
+                            icon: Icon(Icons.photo, color: Colors.white),
+                            onPressed: _pickImageFromGallery,
+                          ),
+                          IconButton(
+                            iconSize: 32,
+                            icon: Icon(Icons.camera_alt, color: Colors.white),
+                            onPressed: _takePhotoWithCamera,
+                          ),
+                        ]),
                   ),
                 ],
               ),
             ),
           ),
           Padding(
-            padding:
-                EdgeInsets.only(top:
-                    200),
-            child:
-                ListView(children:
-                    [
+            padding: EdgeInsets.only(top: 200),
+            child: ListView(children: [
               ListTile(
-                leading:
-                    Icon(Icons.account_circle),
-                title:
-                    Text('Name', style:
-                        TextStyle(fontFamily:
-                            'Montserrat')),
-                subtitle:
-                    Text(_name, style:
-                        TextStyle(fontFamily:
-                            'Raleway')),
-                trailing:
-                    IconButton(
-                  iconSize:
-                      32,
-                  icon:
-                      Icon(Icons.edit),
-                  onPressed:
-                      () {
-                    _showEditDialog('Name',
-                        _name, (value) {
+                leading: Icon(Icons.account_circle),
+                title: Text('Name', style: TextStyle(fontFamily: 'Montserrat')),
+                subtitle: Text(_name, style: TextStyle(fontFamily: 'Raleway')),
+                trailing: IconButton(
+                  iconSize: 32,
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    _showEditDialog('Name', _name, (value) {
                       setState(() {
-                        _name =
-                            value;
+                        _name = value;
                       });
                     });
                   },
                 ),
               ),
               ListTile(
-                leading:
-                    Icon(Icons.email),
+                leading: Icon(Icons.email),
                 title:
-                    Text('Email', style:
-                        TextStyle(fontFamily:
-                            'Montserrat')),
-                subtitle:
-                    Text(_email, style:
-                        TextStyle(fontFamily:
-                            'Raleway')),
-                trailing:
-                    IconButton(
-                  iconSize:
-                      32,
-                  icon:
-                      Icon(Icons.edit),
-                  onPressed:
-                      () {
-                    _showEditDialog('Email',
-                        _email, (value) {
+                    Text('Email', style: TextStyle(fontFamily: 'Montserrat')),
+                subtitle: Text(_email, style: TextStyle(fontFamily: 'Raleway')),
+                trailing: IconButton(
+                  iconSize: 32,
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    _showEditDialog('Email', _email, (value) {
                       setState(() {
-                        _email =
-                            value;
+                        _email = value;
                       });
                     });
                   },
                 ),
               ),
               ListTile(
-                leading:
-                    Icon(Icons.phone),
+                leading: Icon(Icons.phone),
                 title:
-                    Text('Phone', style:
-                        TextStyle(fontFamily:
-                            'Montserrat')),
-                subtitle:
-                    Text(_phone, style:
-                        TextStyle(fontFamily:
-                            'Raleway')),
-                trailing:
-                    IconButton(
-                  iconSize:
-                      32,
-                  icon:
-                      Icon(Icons.edit),
-                  onPressed:
-                      () {
-                    _showEditDialog('Phone',
-                        _phone, (value) {
+                    Text('Phone', style: TextStyle(fontFamily: 'Montserrat')),
+                subtitle: Text(_phone, style: TextStyle(fontFamily: 'Raleway')),
+                trailing: IconButton(
+                  iconSize: 32,
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    _showEditDialog('Phone', _phone, (value) {
                       setState(() {
-                        _phone =
-                            value;
+                        _phone = value;
                       });
                     });
                   },
                 ),
               ),
               ListTile(
-                leading:
-                    Icon(Icons.web),
+                leading: Icon(Icons.web),
                 title:
-                    Text('Website', style:
-                        TextStyle(fontFamily:
-                            'Montserrat')),
+                    Text('Website', style: TextStyle(fontFamily: 'Montserrat')),
                 subtitle:
-                    Text(_website, style:
-                        TextStyle(fontFamily:
-                            'Raleway')),
-                trailing:                    IconButton(
-                  iconSize:
-                      32,
-                  icon:
-                      Icon(Icons.edit),
-                  onPressed:
-                      () {
-                    _showEditDialog('Website',
-                        _website, (value) {
+                    Text(_website, style: TextStyle(fontFamily: 'Raleway')),
+                trailing: IconButton(
+                  iconSize: 32,
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    _showEditDialog('Website', _website, (value) {
                       setState(() {
-                        _website =
-                            value;
+                        _website = value;
                       });
                     });
                   },
                 ),
               ),
               ListTile(
-                leading:
-                    Icon(Icons.location_on),
-                title:
-                    Text('Location', style:
-                        TextStyle(fontFamily:
-                            'Montserrat')),
+                leading: Icon(Icons.location_on),
+                title: Text('Location',
+                    style: TextStyle(fontFamily: 'Montserrat')),
                 subtitle:
-                    Text(_location, style:
-                        TextStyle(fontFamily:
-                            'Raleway')),
-                trailing:
-                    IconButton(
-                  iconSize:
-                      32,
-                  icon:
-                      Icon(Icons.edit),
-                  onPressed:
-                      () {
-                    _showEditDialog('Location',
-                        _location, (value) {
+                    Text(_location, style: TextStyle(fontFamily: 'Raleway')),
+                trailing: IconButton(
+                  iconSize: 32,
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    _showEditDialog('Location', _location, (value) {
                       setState(() {
-                        _location =
-                            value;
+                        _location = value;
                       });
                     });
                   },
                 ),
               ),
               ListTile(
-                leading:
-                    Icon(Icons.perm_identity),
-                title:
-                    Text('ID', style:
-                        TextStyle(fontFamily:
-                            'Montserrat')),
-                subtitle:
-                    Text(_id, style:
-                        TextStyle(fontFamily:
-                            'Raleway')),
-                trailing:
-                    IconButton(
-                  iconSize:
-                      32,
-                  icon:
-                      Icon(Icons.edit),
-                  onPressed:
-                      () {
-                    _showEditDialog('ID',
-                        _id, (value) {
+                leading: Icon(Icons.perm_identity),
+                title: Text('ID', style: TextStyle(fontFamily: 'Montserrat')),
+                subtitle: Text(_id, style: TextStyle(fontFamily: 'Raleway')),
+                trailing: IconButton(
+                  iconSize: 32,
+                  icon: Icon(Icons.edit),
+                  onPressed: () {
+                    _showEditDialog('ID', _id, (value) {
                       setState(() {
-                        _id =
-                            value;
+                        _id = value;
                       });
                     });
                   },
@@ -337,5 +251,3 @@ class _ProfileScreenState extends State<ProfileScreen> {
     );
   }
 }
-
-

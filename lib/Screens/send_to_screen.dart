@@ -6,29 +6,23 @@ class SendToScreen extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, color: Colors.black),
           onPressed: () {
             // Navigate back to the previous screen
             Navigator.pop(context);
           },
         ),
-        title: Text('Send to'),
+        title: Text('Send to', style: TextStyle(color: Colors.black)),
         actions: [
           IconButton(
-            icon: Icon(Icons.help_outline),
+            icon: Icon(Icons.help_outline, color: Colors.black),
             onPressed: () {
               // Handle the action when the "?" icon is pressed
             },
           ),
         ],
         flexibleSpace: Container(
-          decoration: BoxDecoration(
-            gradient: LinearGradient(
-              colors: [Colors.blue, Colors.purple],
-              begin: Alignment.topLeft,
-              end: Alignment.bottomRight,
-            ),
-          ),
+          decoration: BoxDecoration(color: Colors.white),
         ),
       ),
       body: Column(

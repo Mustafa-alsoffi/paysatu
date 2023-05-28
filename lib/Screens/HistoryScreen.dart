@@ -136,12 +136,12 @@ class _HistoryScreenState extends State<HistoryScreen> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text('History'),
+                Text('History', style: TextStyle(color: Colors.white)),
               ],
             ),
             Spacer(),
             SizedBox(width: 8),
-            Icon(Icons.help),
+            Icon(Icons.help, color: Colors.white),
           ],
         ),
         centerTitle: true,
@@ -189,8 +189,8 @@ class _HistoryScreenState extends State<HistoryScreen> {
                               ? Colors.red
                               : Colors.green,
                         ),
-                        title: Text(
-                            '${transaction.name} (${transaction.number})'),
+                        title:
+                            Text('${transaction.name} (${transaction.number})'),
                         subtitle: Text(
                             '${transaction.type} via ${transaction.upiId}'),
                         trailing: Column(

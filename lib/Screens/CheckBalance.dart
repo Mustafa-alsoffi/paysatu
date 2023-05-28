@@ -6,15 +6,15 @@ class CheckBalance extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         leading: IconButton(
-          icon: Icon(Icons.arrow_back),
+          icon: Icon(Icons.arrow_back, color: Colors.white),
           onPressed: () {
             Navigator.pop(context);
           },
         ),
-        title: Text('Balance'),
+        title: Text('Balance', style: TextStyle(color: Colors.white)),
         actions: [
           IconButton(
-            icon: Icon(Icons.help_outline),
+            icon: Icon(Icons.help_outline, color: Colors.white),
             onPressed: () {},
           ),
         ],
