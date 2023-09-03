@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400&display=swap" rel="stylesheet">
+
+
+  <style>
+    body{
+        font-family: 'Poppins', sans-serif;
+        background-color: rgb(42, 40, 40);
+    }
+
+    .hidden {
+      /* opacity: 0; */
+    }
+
+    #dialog {
+      width: 600px;
+      height: 600px;
+      /* background-color: rgb(233, 226, 226); */
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      display: flex;
+      flex-direction: column;
+      /* padding: 90px; */
+    }
+
+    /* #dialog .div{
+        border-radius: 10px;
+    } */
+
+
+    .dialog-1 div {
+        padding:20px;
+        padding-left: 30px;
+        font-size: 23px;
+        border-radius: 10px;
+       
+    }
+
+    .dialog-1{
+        display: flex;
+        justify-content: space-between;
+        background-color: #F0F2F5;
+        height: 100px;
+        /* border-bottom: 1px thin rgb(134, 48, 48); */
+        /* border-radius: 17px; */
+    
+        border-top-left-radius: 40px;
+        border-top-right-radius: 40px;
+        /* opacity: 0; */
+        
+    }
+
+
+    .dialog-2{
+        height: 80px;
+        background-color:#F0F2F5;
+        display: flex;
+        justify-content: space-between;
+        /* opacity: 0;   */
+        
+    }
+
+
+    .dialog-2-1{
+        padding:20px;
+        padding-left: 30px;
+        font-size: 23px;
+    }
+
+
+
+    .dialog-3{
+        display: flex;
+        justify-content: space-around;
+        /* opacity: 0; */
+
+        
+    }
+
+   #countdownTimer{
+    font-size: 30px;
+    /* background-color: rgb(0, 0, 0); */
+    width: 100px;
+    /* z-index: 10; */
+    /* color: white; */
+    /* height: 20px; */
+    padding-bottom: 10px;
+
+   }
+
+    .dialog-4{
+        display: flex;
+        justify-content: space-between;
+        background-color: #F0F2F5;
+        height: 100px;
+        padding:20px;
+        padding-left: 30px;
+        font-size: 23px;
+        border-bottom-right-radius: 40px;
+        border-bottom-left-radius: 40px;
+        /* opacity: 0; */
+    }
+
+
+    .overlay {
+  /* position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%; */
+  background-image: linear-gradient(to bottom, rgba(255, 0, 0, 0.5), rgba(0, 0, 255, 0.5));
+}
+
+.button-show{
+    opacity: 0;
+}
+
+
+  </style>
+</head>
+<body>
+   
+  <button class="button-show" onclick="showDiv()">Show Div</button>
+
+  <div id="dialog" class="hidden" >
+    <div class="dialog-1">
+        <div style="
+            font-weight: bold;"> Pay via PaySatu </div>
+        <div> Ⅹ </div>
+    </div>
+    <div class="dialog-2">
+        <div class="dialog-2-1"> jeremy@paysatu</div>
+        <div class="dialog-2-1">   <div id="countdownTimer"> </div> </div>
+       <!-- <div class="dialog-2-1">hello </div> -->
+
+
+    </div>
+    <div class="dialog-3 overlay"   onclick="backHome()" ">
+        <div><img id="dialogImage" style="
+            height: 350px;
+            margin-bottom: 30px;
+            border-radius: 20px;
+            padding-top: 10px;
+            " src="./push.jpeg" alt=""></div>
+    </div>
+    <div class="dialog-4" onclick="changeImage()">
+       ! Do not close or refresh the page
+    </div>
+  </div>
+
+
+  <script>
+    function showDiv() {
+      var div = document.getElementById("dialog");
+      div.classList.remove("hidden");
+    }
+
+
+    function changeImage() {
+      var image = document.getElementById("dialogImage");
+      image.src = "./push3.jpeg"; // Replace "new_image.jpg" with the path to your new image
+      
+      
+      var dialog4 = document.querySelector(".dialog-4");
+      var dialog2 = document.querySelector(".dialog-2");
+      var cd = document.getElementById("countdownTimer");
+
+    //   dialog4.style.opacity = "0";
+    //   dialog2.style.opacity = "0";
+    
+    dialog4.innerHTML="Returning to the merchant in 0:05";
+      cd.style.opacity = "0";
+
+
+
+
+
+
+      //timer
+    }
+
+    function backHome(){
+        // var dialog3 = document.querySelector(".dialog-4")
+        window.location.href = "p2_copy.html";
+    }
+
+    var countdownTime = 5 * 60 * 1000;
+
+// Get the countdown timer element
+var countdownTimer = document.getElementById('countdownTimer');
+
+// Start the countdown
+var countdownInterval = setInterval(function() {
+  // Calculate the minutes and seconds
+  var minutes = Math.floor(countdownTime / (60 * 1000));
+  var seconds = Math.floor((countdownTime % (60 * 1000)) / 1000);
+
+  // Format the minutes and seconds with leading zeros
+  var formattedMinutes = String(minutes).padStart(2, '0');
+  var formattedSeconds = String(seconds).padStart(2, '0');
+
+  // Update the countdown timer element
+  countdownTimer.textContent = formattedMinutes + ':' + formattedSeconds;
+
+  // Decrease the countdown time by 1 second
+  countdownTime -= 1000;
+
+  // Check if the countdown has reached zero
+  if (countdownTime < 0) {
+    clearInterval(countdownInterval);
+    countdownTimer.textContent = 'Time up!';
+  }
+}, 1000);
+
+
+  </script>
+
+
+
+
+</body>
+</html>

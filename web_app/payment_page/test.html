@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .pay-satu-main {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    
+    .pay-satu-main .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 200px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .pay-satu-main .dropdown input {
+        height: 50px;
+      width: 100%;
+      padding: 5px;
+      
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+    }
+    
+    .pay-satu-main .dropdown button {
+      width: 100%;
+      padding: 8px 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .pay-satu-main.active .dropdown {
+      display: block;
+      width: 820px;
+      /* height: 300px; */
+      
+    }
+  </style>
+  <script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var paySatuMain = document.querySelector(".pay-satu-main");
+      var dropdown = document.querySelector(".pay-satu-main .dropdown");
+      
+      paySatuMain.addEventListener("click", function() {
+        paySatuMain.classList.toggle("active");
+      });
+      
+      dropdown.addEventListener("click", function(event) {
+        event.stopPropagation();
+      });
+    });
+  </script>
+</head>
+<body>
+  <div class="pay-satu-main">
+    PaySatu ID
+    <div class="dropdown">
+      <input type="text" placeholder="Enter SatuPay ID">
+      <button>Pay</button>
+    </div>
+  </div>
+</body>
+</html>
