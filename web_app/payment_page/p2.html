@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap" rel="stylesheet">
+
+  <title>Acorma Cart</title>
+  <style>
+    /* CSS styles for the header */
+
+    body{
+        font-family: 'Poppins', sans-serif;
+margin:0px;
+background-image: linear-gradient(43deg, #4158D0 0%, #C850C0 46%, #FFCC70 100%);
+background-repeat: no-repeat;
+    background-attachment: fixed;
+    /* opacity: 0; */
+
+
+
+
+    }
+
+    
+
+    header {
+      background-color: #f4d4d4b6;
+      padding: 20px;
+    }
+    
+    .div-1{
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+      height: 500px; 
+   margin-top: 90px;
+   width: 850px;
+   background-color: rgb(255, 255, 255);
+   margin-left: 130px;
+   padding-top: 60px;
+   padding-bottom: 60px;
+   padding-left: 25px;
+   padding-right: 25px;
+   border-radius: 10px;
+  
+    }
+    .logo {
+      float: left;
+      margin-right: 20px;
+    }
+
+    .div-2-1-sub{
+        height: 90px;
+        background-color: #EEF4FF;
+        margin-left: 30px;
+        margin-top: 30px;
+        display: flex;
+        align-items: center;
+        gap:40px;
+        font-size: 23px;
+        padding: 20px;
+        border-radius: 20px;
+    }
+
+    
+
+    .div-1-1-sub{
+        height: 70px;
+        background-color: rgb(92, 133, 133);
+        margin-left: 30px;
+        margin-top: 30px;
+    }
+
+    .div-2-1-sub-1{
+      text-align: center;
+      vertical-align: center;
+
+    }
+
+    .sub-1{
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      background-color: #EEF4FF;
+      height: 60px;
+      font-size: 20px;
+      padding: 30px;
+      border-radius: 15px;
+    }
+
+    .div-2-1{
+      background-color: #ffffff;
+      width: 850px;
+      padding-top: 60px;
+   padding-bottom: 60px;
+   padding-left: 25px;
+   padding-right: 25px;
+   border-radius: 10px;
+   /* height: 1000px; */
+   
+    }
+
+    .pay-satu-main {
+      position: relative;
+      display: inline-block;
+      cursor: pointer;
+    }
+    
+    .pay-satu-main .dropdown {
+      display: none;
+      position: absolute;
+      top: 100%;
+      left: 0;
+      width: 200px;
+      padding: 10px;
+      background-color: #f9f9f9;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.15);
+    }
+    
+    .pay-satu-main .dropdown input{
+        height: 50px;
+      width: 100%;
+      padding: 5px;
+      margin-bottom: 10px;
+      border: 1px solid #ccc;
+      border-radius: 4px;
+      font-size: 30px;
+    }
+    
+    .pay-satu-main .dropdown button {
+      width: 100%;
+      height: 60px;
+      padding: 8px 10px;
+      background-color: #4CAF50;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+    }
+    
+    .pay-satu-main.active .dropdown {
+      display: block;
+      /* width: 820px;
+      margin-left: -120px; */
+
+      width: 720px;
+    margin-left: -93px;
+    margin-top: 52px;
+    padding-right: 26px;
+    }
+
+    .expanded {
+      height: 1000px;
+    }
+
+
+
+  </style>
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+      var paySatuMain = document.querySelector(".pay-satu-main");
+      var dropdown = document.querySelector(".pay-satu-main .dropdown");
+      var div2_1 = document.querySelector(".div-2-1");
+      
+      paySatuMain.addEventListener("click", function() {
+        paySatuMain.classList.toggle("active");
+        // div2_1.classList.toggle("expanded");
+        document.getElementById("satuContainer").classList.toggle("expanded");
+        
+
+
+      });
+      
+      dropdown.addEventListener("click", function(event) {
+        event.stopPropagation();
+      });
+    });
+
+    function redirectToPopup() {
+        window.open("https://dadc-2001-d08-228f-3a01-5d01-f427-2854-caaa.ngrok-free.app/ping");
+        window.location.href = "popup.html";
+    }
+  </script>
+
+
+</head>
+<body>
+  <header style="display: flexbox;flex-direction: row;">
+    <div class="logo">
+      <img style="
+        height: 80px;
+        border-radius: 30px;" src="./app_logo_1.jpg" alt="Your Logo">
+    </div>
+
+
+    <div style="
+    font-size: 48px;
+    font-weight: bold;">  Acorma Cart</div>
+  </header>
+
+
+
+  <div class="div-1">
+
+    <p style="margin:0px; padding-left: 10px; font-size: 40px;">Payment Summary</p>
+
+  <div class="sub-1">
+    <div>Grocery Cart | Jeremy Won Yun</div>
+    <div></div>
+  </div>
+
+  <div class="sub-1">
+    <div>Total items</div>
+    <div>13</div>
+  </div>
+  <div class="sub-1">
+    <div>Total price</div>
+    <div>433</div>
+  </div>
+  <div class="sub-1">
+    <div>Amount payable</div>
+    <div>433</div>
+  </div>
+  
+</div>
+
+  
+
+  <div style="height: 600px; 
+   margin-top: 90px;
+   width: 850px;
+   background-color: beige;
+   margin-left: 130px;
+   display: flexbox;
+   ">
+
+
+   <div class="div-2-1" id="satuContainer">
+
+
+    <p style="margin:0px; padding-left: 10px; font-size: 40px;">Payment Options</p>
+
+    <div class="div-2-1-sub">
+      <div>
+        <img src="./Payment_Icons/credit_card.svg" alt="image">
+      </div>
+      <div class="div-2-1-sub-1">Credit/Debit Card</div>
+    </div>
+
+    <div class="div-2-1-sub">
+      <div>
+        <img src="./Payment_Icons/Group_49.svg" alt="image">
+      </div>
+      <div>FPX</div>
+    </div>
+
+    <div class="div-2-1-sub">
+      <div>
+        <img src="./Payment_Icons/E-Wallet.svg" alt="image">
+      </div>
+      <div>E-Wallets</div>
+    </div>
+
+    <div class="div-2-1-sub">
+      <div>
+        <img src="./Payment_Icons/CashOnDelivery.svg" alt="image">
+      </div>
+      <div>Cash on Delivery</div>
+    </div>
+
+    <div class="div-2-1-sub">
+      <div>
+        <img src="./Payment_Icons/PS.svg" alt="image">
+      </div>
+
+      <div class="pay-satu-main">
+    PaySatu ID
+    <div class="dropdown">
+      <input type="text" placeholder="Enter SatuPay ID">
+      <!-- <button>Pay</button> -->
+      <button onclick="redirectToPopup()">Pay</button>
+      
+
+
+    </div>
+  </div>
+
+    </div>
+
+
+   </div>
+
+   
+  </div>
+</body>
+
+</html>
